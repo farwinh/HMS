@@ -145,7 +145,10 @@
                             </li>
                           </div>
                           <div class="col">
-                          <li class="nav-item dropdown">
+                          <li class="nav-item">
+                            <a class="nav-link nl" href='<?php echo base_url(); ?>/stu_notice'>NOTICES</a>
+                            </li>
+                          <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle nl" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             VIEW
                           </a>
@@ -154,7 +157,7 @@
                           <li class="navbar-custom d active"><a class="dropdown-item d" href='<?php echo base_url(); ?>/stu_notice'>NOTICE</a></li>
                         
                         </ul>
-             </li>
+             </li> -->
                           </div>
                           <div class="col">
                             <li class="nav-item">
