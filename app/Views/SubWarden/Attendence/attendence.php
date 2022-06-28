@@ -65,9 +65,22 @@
             font-size:4em;
         }
         body{
-    background-color: white;
-    color: black;
-}
+          background-color: white;
+          color: black;
+        }
+        .roomM{
+        background-image: url('<?=base_url()?>/assets/images/Footer/room.svg');
+        background-repeat:no-repeat;
+      }
+        .dashA{
+          background-image: url('<?=base_url()?>/assets/images/Footer/dash.svg');
+          background-repeat:no-repeat;
+        
+        }
+        .dashC{
+          background-image: url('<?=base_url()?>/assets/images/Footer/chat.svg');
+          background-repeat:no-repeat;
+        }
 			</style>
     </head>
     <body>
@@ -109,7 +122,7 @@
              foreach ($user as $d){
               $us_id=$d['user_id'];
         ?>
-          <div class="row headerPart">
+          <div class="row headerPart d-none d-sm-none d-md-block">
         <nav class="navbar navbar-custom navbar-expand-lg fixed-top" style="position:fixed;">
                   <div > 
                       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -194,70 +207,59 @@
           </svg>
           
         </div>
-         <!--Mobile view interface-->
-         <div class="mobInterface  d-block d-sm-block d-md-none " style="padding-bottom:20%;">
-        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-                  <div > 
-                  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">Hostel Management System</a>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="row">
-      <div class="col-md-4">
-        <a class="navbar-brand abrand" href="#"><img src="<?=base_url()?>/assets/images/Header/logo.png" class="proimgMob"></a>
-      </div>
-      <div class="col-md-5" style="position:absolute;font-size:12px;left:17%;top:25%;color:white">
-        <div class="row">Faculty of Technology</div>
-        <div class="row">University of Ruhuna</div>
-      </div>
-    </div>
-                        <div class="row" >
-                        <ul class="nav nav-tabs">
-                        <li class="nav-item" >
-                         <a class="nav-link nl active" href='#'>MY PROFILE</a>
-                       </li>
-                       <li class="nav-item">
-                         <a class="nav-link nl" href='<?php echo base_url(); ?>/SubRooms'>ROOMS</a>
-                       </li>
-                       <li class="nav-item">
-                         <a class="nav-link nl" href='<?php echo base_url(); ?>/SubAttendance'>ATTENDENCE</a>
-                       </li>
-                         <li class="nav-item">
-                         <a class="nav-link nl" href='<?php echo base_url(); ?>/SubChat'>CHATS</a>
-                       </li>
-                         <li class="nav-item">
-                         <a class="nav-link nl" href='<?php echo base_url(); ?>/SubComplaints'>COMPLAINTS</a>
-                       </li>
-                         <li class="nav-item">
-                         <a class="nav-link nl" href='<?php echo base_url(); ?>/SubNotices'>NOTICES</a>
-                       </li>
-                       <li class="nav-item">
-                         <a class="nav-link nl" href='<?php echo base_url(); ?>/SubRequests'>REQUESTS</a>
-                       </li>
-                       <li class="nav-item">
-                         <a class="nav-link nl" href='<?php echo base_url(); ?>/'>HOSTEL FEES</a>
-                       </li>
-                       
-                       <li class="nav-item">
-                         <a class="nav-link nl" href='<?php echo base_url(); ?>/SubExp'>EXPENSES</a>
-                       </li>  
-                       <li class="nav-item">
-                         <a class="nav-link nl" href='<?php echo base_url(); ?>/logout'>LOGOUT</a>
-                       </li>  
-                       <li class="nav-item">
-                       
-                     </li>
-                     </ul>  
-                        </div>
-                        
-                          
-                          <button class="btn btn-default darkbtn " onclick="myFunction()"><i class="fas fa-moon moonn"></i><i class="fas fa-sun sunn"></i></button>
-                              <button class="btn btn-default eyebtn" onclick="myFunctionEye()"><i class="fas fa-eye eyee"></i><i class="fas fa-eye-slash eyeeNo"></i></button>
-                        </div>
+
+         <!--Mobile view-->
+       <div class="d-block d-sm-block d-md-none">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+          <a class="navbar-brand" href="#" style="color:white;">HOSTEL MANAGEMENT SYSTEM</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            
+          <div class="collapse navbar-collapse mySet" id="navbarNavDropdown">
+
+          <div class="row">
+              <div class="col" style="width:40%"><img src="<?=base_url()?>/assets/images/Header/logo.png" style="width:55px;"></div>
+              <div class="col myHeadMob" style="width:60%">
+                <div class="row" style="padding-top:2%;">FACULTY OF TECHNOLOGY</div>
+                <div class="row" >UNIVERSITY OF RUHUNA</div>
+              </div>
+            </div>
+            <ul class="navbar-nav" style="padding-left:5%;">
+            <li class="nav-item">
+              <a class="nav-link nl" href='<?php echo base_url(); ?>/SubProf' style="color:white">PROFILE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nl" href='<?php echo base_url(); ?>/SubRooms' style="color:white">ROOMS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nl active" href='<?php echo base_url(); ?>/SubAttendance' style="color:white">ATTENDENCE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nl" href='<?php echo base_url(); ?>/SubChat' style="color:white">CHATS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nl" href='<?php echo base_url(); ?>/' style="color:white">HOSTEL FEES</a>
+            </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" style="color:white;font-weight:bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  More
+                </a>
+                <div class="dropdown-menu menuDrop" aria-labelledby="navbarDropdownMenuLink" >
+                      <a class="dropdown-item dop" href='<?php echo base_url(); ?>/SubComplaints'>COMPLAINTS</a>
+                      <a class="dropdown-item dop" href='<?php echo base_url(); ?>/SubExp'>EXPENSES</a>
+                      <a class="dropdown-item dop" href='<?php echo base_url(); ?>/SubNotices'>NOTICES</a>
+                      <a class="dropdown-item dop" href='<?php echo base_url(); ?>/SubRequests'>REQUESTS</a>
+                </div>
+              </li>
+            </ul>
+          </div>
         </nav>
         </div>
+        <!--Mobile view end-->
+
         <?php } ?>
         <script>
           function functionScrollMe(){
@@ -330,6 +332,7 @@
                         <div class="col-md-12 text-center " style="padding:5% 5% 5% 5%" id="status"></div>
                     </div>
                 </div>
+                <div class="d-block d-sm-block d-md-none" style="bottom:5%;width:100%;height:15px;"></div>
                 <div class="col-md-8">
                     <table style="width:100%;" class="table table-hover" id="tblMed">
                         <thead class="thead-dark">
@@ -375,5 +378,31 @@
           <footer class="fixedFooter">
               FACULTY OF TECHNNOLOGY - UNIVERSITY OF RUHUNA
           </footer>
+          <!--Mobile view interface footer-->
+          <footer class=" fixed-bottom d-block d-sm-block d-md-none" >
+            <div class="row footerMob" style="width:100%;">
+              <div class="col-2 myFot d-flex justify-content-center text-center" style="left:10px;">
+                <div class="tArea  dashA" href="" type="button"></div></a>
+              </div>
+              <!--activeTA-->
+              <div class="col-2 myFot d-flex justify-content-center text-center" >
+                <a  href='<?php echo base_url(); ?>/SubRooms'><div class="tArea roomM"></div></a>
+              </div>
+              <div class="col-2 myFot d-flex justify-content-center text-center">
+                <div class="tArea dashA"  ></div>
+              </div>
+              <div class="col-2 myFot d-flex justify-content-center text-center">
+                <div class="tArea dashA" id="" ></div>
+              </div>
+              <div class="col-2 myFot d-flex justify-content-center text-center">
+                <div class="tArea dashA" id="" ></div>
+              </div>
+              <div class="col-2 myFot d-flex justify-content-center text-center">.
+              <a href='<?php echo base_url(); ?>/logout'><div class="tArea dashA"></div></a>
+                 
+              </div>
+              
+            </div>
+          </footer> 
     </body>
 </html>

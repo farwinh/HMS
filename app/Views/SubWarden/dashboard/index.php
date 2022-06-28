@@ -262,6 +262,9 @@
             </div>
             <ul class="navbar-nav" style="padding-left:5%;">
             <li class="nav-item">
+              <a class="nav-link nl active" href='#' style="color:white">PROFILE</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link nl" href='<?php echo base_url(); ?>/SubRooms' style="color:white">ROOMS</a>
             </li>
             <li class="nav-item">
