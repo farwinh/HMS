@@ -28,3 +28,13 @@
 .link:active{
     color: white;
 }
+
+.dashA{
+    background-image: url('<?=base_url()?>/assets/images/Footer/dash.svg');
+    background-repeat:no-repeat;
+  
+  }
+  .dashC{
+    background-image: url('<?=base_url()?>/assets/images/Footer/chat.svg');
+    background-repeat:no-repeat;
+  }
