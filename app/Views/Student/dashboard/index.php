@@ -45,7 +45,7 @@
         background-image:url("<?=base_url()?>/assets/images/Header/profile.svg");
       }
         body{
-          background-color: white;
+          background-color: gray;
           color:black;
         }
         .darkbtn{
