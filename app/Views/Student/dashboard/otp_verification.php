@@ -1,6 +1,6 @@
 <html>
     <head>
-    <title>Student Dashboard</title>
+    <title>OTP Verification</title>
  <!--Title logo-->
  <link rel="icon" href="<?=base_url()?>/assets/images/Header/logo.png">
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/css/Footer/style.css">
@@ -272,23 +272,7 @@
         </div>
         <!--Mobile view end-->
         
-       
-        <script>
-          function functionScrollMe(){
-            var map = document.getElementById('dataUser');
-          //alert("s");
-            map.scrollIntoView({behavior: "smooth"});
-          }
-
-        //navbar
-            $(function () {
-              $(document).scroll(function () {
-                var $nav = $(".navbar");
-                $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-              });
-            }); 
-        </script>
-
+      
          
           <div>
     <div class="row ">
@@ -321,6 +305,22 @@
 </div>
                   </div>
                   </div>
+
+                  <script>
+          function functionScrollMe(){
+            var map = document.getElementById('dataUser');
+          //alert("s");
+            map.scrollIntoView({behavior: "smooth"});
+          }
+
+        //navbar
+            $(function () {
+              $(document).scroll(function () {
+                var $nav = $(".navbar");
+                $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+              });
+            }); 
+        </script>
 
 <?php 
  } ?>
