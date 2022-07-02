@@ -716,5 +716,30 @@
           <footer class="fixedFooter">
               FACULTY OF TECHNNOLOGY - UNIVERSITY OF RUHUNA
           </footer>
+          <!--Mobile view interface footer-->
+          <footer class=" fixed-bottom d-block d-sm-block d-md-none" >
+            <div class="row footerMob" style="width:100%;">
+              <div class="col-2 myFot d-flex justify-content-center text-center" style="left:10px;">
+                <div class="tArea activeTA dashA" href="" type="button"></div></a>
+              </div>
+              <div class="col-2 myFot d-flex justify-content-center text-center" >
+                <a  href='<?php echo base_url(); ?>/SubRooms'><div class="tArea roomM"></div></a>
+              </div>
+              <div class="col-2 myFot d-flex justify-content-center text-center">
+                <div class="tArea dashA"  ></div>
+              </div>
+              <div class="col-2 myFot d-flex justify-content-center text-center">
+                <div class="tArea dashA" id="" ></div>
+              </div>
+              <div class="col-2 myFot d-flex justify-content-center text-center">
+                <div class="tArea dashA" id="" ></div>
+              </div>
+              <div class="col-2 myFot d-flex justify-content-center text-center">.
+              <a href='<?php echo base_url(); ?>/logout'><div class="tArea dashA"></div></a>
+                 
+              </div>
+              
+            </div>
+          </footer> 
     </body>
 </html>
