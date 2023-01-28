@@ -7,6 +7,7 @@ use App\Models\student_model;
 use App\Models\Security_model;
 use App\Models\chats_model;
 use App\Models\model_subwarden;
+use App\Models\student_member_model;
 
 //home pages
 class dean_Chats extends BaseController
@@ -40,6 +41,67 @@ class dean_Chats extends BaseController
         }
         return $output;
     }
+    function getProPic()
+    {
+        $theUser = $this->request->getVar('type');
+        $output = '';
+        switch ($theUser) {
+            case 'subwarden':
+                $obj_war = new model_subwarden();
+                foreach(($result=$obj_war->findAll(4)) as $row){
+                    $output .='
+                    
+                    <td>
+                        <img src="assets/images/Profiles/SubWarden/'.$row['pro_pic'].'" class="imgProBox">
+                    </td>
+                    
+                    ';  
+                    
+                }
+            return $output;
+            break;
+            case 'warden':
+
+                $obj_sw = new model_warden();
+                foreach (($result = $obj_sw->findAll(4)) as $row) {
+                    $output .= '
+                    
+                    <td>
+                        <img src="assets/images/Profiles/Warden/' . $row['pro_pic'] . '" class="imgProBox">
+                    </td>
+                    
+                    ';
+                }
+                return $output;
+                break;
+            case 'student':
+                $obj_stu = new student_member_model();
+                foreach (($result = $obj_stu->findAll(4)) as $row) {
+                    $output .= '
+                    
+                    <td>
+                        <img src="assets/images/Profiles/Student/' . $row['pro_pic'] . '" class="imgProBox">
+                    </td>
+                    
+                    ';
+                }
+                return $output;
+                break;
+            case 'security':
+                $obj_sec = new Security_model();
+                foreach (($result = $obj_sec->findAll(4)) as $row) {
+                    $output .= '
+                    
+                    <td>
+                        <img src="assets/images/Profiles/Security/' . $row['pro_pic'] . '" class="imgProBox">
+                    </td>
+                    
+                    ';
+                }
+                return $output;
+                break;
+        }
+    }
 
     function sendChats(){
         $output="";
@@ -48,7 +110,7 @@ class dean_Chats extends BaseController
         $theChat=$this->request->getVar('msg');
         $date=date('Y-m-d');
         $time=date('H:i:s');
-        $sender='dean';
+        $sender='D001';
         $data=["sender_id"=>$sender,"receiver_id"=>$theUser,"date"=>$date,"time"=>$time,"chat"=>$theChat];
 
         //$response=$this->$obj_chat->saverecords($sender,$theUser,$date,$time,$theChat);

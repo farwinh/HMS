@@ -26,7 +26,7 @@ class Dean_Dashboard extends BaseController
         $user=$this->request->getVar('the_user');
         foreach(($result=$obj_dean->where('user_id',$user)->findAll()) as $d){
             $output .='
-            <table border="0" class="table table-borderless table-light tbl" >
+          
                             
                             
                                 <tr>
@@ -70,8 +70,20 @@ class Dean_Dashboard extends BaseController
                                     '. $d['address'].'
                                     </td>
                                 </tr>
-                                
-                            </table>
+                                <tr>
+                                <td>
+                                <div class="col-md-12 text-right">
+                                    <i class="fas fa-chevron-circle-down" onclick="showMoreData()" style="font-size:20px;padding-bottom:10;" type="button" ></i>
+                                </div>
+                                </td>
+                                    <td >
+                                    <div class="col-md-12 text-right">
+                                    <i class="fas fa-edit" style="font-size:20px;padding-bottom:10;" type="button" class="btn btn-primary" data-toggle="modal" onclick="updateBTN()" data-target="#exampleModalCenter"></i>
+                                    </div>
+                                    </td>
+                                </tr>
+                          
+                            
             ';  
         }
         return $output;
@@ -84,7 +96,7 @@ class Dean_Dashboard extends BaseController
         $user=$this->request->getVar('the_user');
         foreach(($result=$obj_dean->where('user_id',$user)->findAll()) as $d){
             $output .='
-            <table border="0" class="table table-borderless table-light tbl ">
+            <table border="0" class="table table-borderless table-light tbl " style="color:black">
                                                     
                 <div class="form-group">
                 <tr> 
@@ -150,8 +162,10 @@ class Dean_Dashboard extends BaseController
                         </div> 
                     </td>
                 </tr>
+                
                 </div>
-                                                                    
+                
+                                         
             
     </table>
             ';  
@@ -193,10 +207,7 @@ class Dean_Dashboard extends BaseController
             'contact_no'=>$mobile,
             'email'=>$email
         );
-        
-        //$re=$obj_warden->where('user_id',$user);
-        //$reUp=$this->db->update('warden',$data);
-        //$reUp=$obj_warden->update($data);
+
         $reUp=$obj_dean->where('user_id',$user)->set($data)->update();
         if($reUp){
             foreach(($result=$obj_dean->where('user_id',$user)->findAll()) as $d){
@@ -302,7 +313,6 @@ class Dean_Dashboard extends BaseController
     public function notice(){
         echo view("dean/notice/notice.php");
     }
-
     public function rooms(){
         echo view("dean/Rooms/rooms.php");
     }

@@ -5,7 +5,7 @@
 
     class model_users extends Model{
         protected $table="users";
-        protected $primaryKey="user_id";
+        //protected $primaryKey="user_id";
 
         protected $allowedFields=['user_id','user_name','password','post'];
     }

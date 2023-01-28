@@ -7,7 +7,7 @@
         protected $table="student_furniture_request";
         //protected $primaryKey="";
 
-        protected $allowedFields=['student_id','room_no','furniture_type','date','time'];
+        protected $allowedFields=['student_id','room_no','furniture_type','date'];
         	
 
     }

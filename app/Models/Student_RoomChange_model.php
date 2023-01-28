@@ -7,6 +7,6 @@
         protected $table="student_room_change";
         //protected $primaryKey="";
 
-        protected $allowedFields=['student_id','fname','lname','gender','room_no','ac_year','reason'];
+        protected $allowedFields=['student_id','gender','room_no','date','floor_no','time','reason'];
     }
 ?>

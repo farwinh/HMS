@@ -7,6 +7,6 @@
         protected $table="out_request";
         //protected $primaryKey="";
 
-        protected $allowedFields=['reg_no','name','leave_date','leave_time','reason'];
+        protected $allowedFields=['req_id','reg_no','name','leave_date','leave_time','reason','Status','sent_date'];
     }
 ?>

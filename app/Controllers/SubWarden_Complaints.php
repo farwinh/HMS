@@ -36,7 +36,7 @@ class SubWarden_Complaints extends BaseController
         $output="";
         $obj_complaint = new model_complaints();
         $receiver=$this->request->getVar('id');
-        $output .="<caption>SENT COMPLAINTS</caption>";
+
         foreach(($result=$obj_complaint->where('sender',$receiver)->findAll()) as $row){
             $output .='
                 <tr>

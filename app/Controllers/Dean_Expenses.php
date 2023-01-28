@@ -19,11 +19,11 @@ public function expenses(){
         foreach($re as $row){
             $output .='
         <tr class="table-primary" align="center">
-                    <td>'. $row['exp_id'].'</td>
+                    <td>'. $row['receipt'].'</td>
                     <td>'. $row['type'].'</td>
                     <td>'. $row['Date'].'</td>
                     <td>'. $row['Amount'].'</td>
-                    <td><a class="thedownload" href="assets/Documents/Expences/'.$row['receipt'].'" target="_blank">download</a></td>
+                    
            <td> 
                  <div id="'.$row['exp_id'].'" type="button"  onclick="myFunctionDel(this.id)" class="btn btn-danger">DELETE</div></td>
                  

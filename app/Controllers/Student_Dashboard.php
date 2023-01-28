@@ -162,17 +162,74 @@ class Student_Dashboard extends BaseController
         
         
         if(isset($_POST['submit'])){
-           
-            $pname = rand(1000,10000)."-".$_FILES["file"]["name"];
-            $tname = $_FILES["file"]["tmp_name"];
-            echo $pname;
-            $uploads_dir=base_url()."/assets/images/Profile/Student";
-            $mv=move_uploaded_file($tname,$uploads_dir.'/'.$pname);
-            if(!$mv){
-                echo "coono";
+
+            $obj_student= new student_member_model();
+            $file= $this->request->getFile('image');
+            $user = $this->request->getVar('user_id');
+           if($file->isValid()){
+               $imgName= $file->getRandomName();
+                //$file->move('profile/',$imgName);
+                $file->move('assets/images/Profiles/Student/',$imgName);
+                $data=array(
+                    'pro_pic'=>$imgName
+
+                );
+                $re=$obj_student->where('student_id',$user)->set($data)->update();
+                if($re){
+                    //echo "updated";
+                    //redirect('/');
+                    return redirect()->to('profile');
                 }
+                //echo $user;
+
+            }else{
+               echo "<script>alert('Cannot update the image')</script>";
+               return redirect()->to('profile');
+            }
+
+
         }
+           
+        //     $pname = rand(1000,10000)."-".$_FILES["file"]["name"];
+        //     $tname = $_FILES["file"]["tmp_name"];
+        //     echo $pname;
+        //     $uploads_dir=base_url()."/assets/images/Profile/Student";
+        //     $mv=move_uploaded_file($tname,$uploads_dir.'/'.$pname);
+        //     if(!$mv){
+        //         echo "coono";
+        //         }
+        // }
     }
+
+    public function getProPicOfMine(){
+        $output = '';
+        $obj_student= new student_member_model();
+        $user=$this->request->getVar('user');
+        $re=$obj_student->where('student_id',$user)->findAll();
+        foreach($re as $row){
+            $img=$row['pro_pic'];
+            $output .='
+                <img src="assets/images/Profiles/Student/'.$img.'" class="propic">
+            ';
+
+        }
+        return $output;
+    }
+    public function getProPicOfMineForHeader(){
+        $output = '';
+        $obj_student= new student_member_model();
+        $user=$this->request->getVar('user');
+        $re=$obj_student->where('student_id',$user)->findAll();
+        foreach($re as $row){
+            $img=$row['pro_pic'];
+            $output .='
+                <img src="assets/images/Profiles/Student/'.$img.'" class="logoT">
+            ';
+
+        }
+        return $output;
+    }
+
     public function update_user(){
         $obj_student= new student_member_model();
 

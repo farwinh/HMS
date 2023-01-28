@@ -3,7 +3,7 @@
 namespace App\Controllers;
 //use App\Models\DashboardModel;
 use App\Models\Student_MedicalReq_model;
-
+$session = \Config\Services::session();
 
 
 class Student_Medical_request extends BaseController
@@ -15,22 +15,32 @@ public function index() {
 }
 
 public function medical(){
-    
+    $user=$_SESSION["user_id"];
+                
+    foreach ($user as $d){
+        $_SESSION["stu_con"]=$d['contact_no'];
+        $_SESSION["registation_no"]=$d['student_id'];
+    }
     			
     $special = new Student_MedicalReq_model();
         $data = [
-            'student_id' => $this->request->getPost('student_id'),
-            'room_no' => $this->request->getPost('room_no'),
-            'med_issue' => $this->request->getPost('med_issue'),
-            'blood_grp' => $this->request->getPost('blood_grp'),
-            'contact' => $this->request->getPost('contact'),
-            'date' => date('Y-m-d'),
-            'time' =>date('H:i:s') 
-            
-
+            'reg_no' => $_SESSION["registation_no"],
+            'contact_no' => $_SESSION["stu_con"],
+            'medical_issue' => $this->request->getPost('med_issue'),
+            'takecareperson_name'=>$this->request->getPost('tcperson'),
+            'takecareperson_tgno'=>$this->request->getPost('tgno'),
+            'takecareperson_contactno'=>$this->request->getPost('contactno'),
+            'leave_date' => date('Y-m-d'),
+            'leave_time' =>date('H:i:s') 
 
         ];
-        $special->save($data);
+        $send=$special->save($data);
+        if($send==!NULL){
+            echo '<script>alert("Request is sent");</script>';
+        }
+        else{
+            echo '<script>alert("Request is not sent");</script>';
+        }
         echo view("Student/Request/Medical_request.php");
 
 }

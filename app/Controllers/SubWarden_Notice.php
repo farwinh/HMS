@@ -15,8 +15,8 @@ class SubWarden_Notice extends BaseController
         $sender=$this->request->getVar('sender');
         $notice=$this->request->getVar('notice');
         $subject=$this->request->getVar('subject');
-        $file=$this->request->getVar('file');
-        $toUpload=$this->request->getFile('myFile');
+      
+      
         $date=date('Y-m-d');
         
         $time=date('H:i:s');
@@ -26,7 +26,7 @@ class SubWarden_Notice extends BaseController
             'time'=>$time,
             'title'=>$subject,
             'notice'=>$notice,
-            'file'=>$file
+          
         );
         $re=$obj_notice->save($dataT);
         

@@ -4,9 +4,9 @@
     use CodeIgniter\Model;
 
     class Student_MedicalReq_model  extends Model{
-        protected $table="stu_medical";
+        protected $table="medical_request";
         //protected $primaryKey="";
 
-        protected $allowedFields=['student_id','room_no','medical_issue','blood_grp','emergency_num','date','time'];
+        protected $allowedFields=['reg_no','contact_no','medical_issue','takecareperson_name','takecareperson_tgno','takecareperson_contactno','leave_date','leave_time'];
     }
 ?>

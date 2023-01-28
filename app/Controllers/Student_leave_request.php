@@ -27,13 +27,13 @@ class Student_leave_request extends BaseController
     {  
         $obj_leaveReq = new out_request_Model();
       
-        $dateToday=date('Y-m-d');
+        $dateToday= date('Y-m-d');
         $output='';
         $user=$this->request->getVar('user');
         $date=$this->request->getVar('date');
         $time=$this->request->getVar('time');   
         $reason=$this->request->getVar('reason');
-        $status='all';
+        $status=0;
         $data=array(
             'reg_no'=>$user,
             'leave_date'=>$date,

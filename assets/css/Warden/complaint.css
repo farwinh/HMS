@@ -4,10 +4,10 @@
     bottom:45px;
 }
  #postNotice, #sendComp{
-  background: radial-gradient(circle, rgba(129,30,30,1) 2%, rgba(85,18,18,1) 69%, rgba(255,0,0,1) 71%, rgba(0,0,0,1) 74%, rgba(0,0,0,1) 98%);  border: none;
-  color: white;
-  font-weight: bold;
+  background: #4285F4;
+  color:white;
  }
  #postNotice:hover ,#sendComp:hover{
-  background: radial-gradient(circle, rgba(36,129,30,1) 2%, rgba(39,85,18,1) 69%, rgba(50,255,0,1) 71%, rgba(0,0,0,1) 74%, rgba(0,0,0,1) 98%);
+  background: #4285F4;
+  color:white;
  }

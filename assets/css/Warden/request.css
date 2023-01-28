@@ -6,13 +6,14 @@
     border-radius: 10px;
     width:90%;
     height: 70px;
-    background: linear-gradient(90deg, rgba(106,154,91,1) 0%, rgba(90,158,71,1) 24%, rgba(65,136,62,1) 50%, rgba(60,98,107,1) 72%, rgba(38,71,82,1) 100%);
-    color:white;
+    background: linear-gradient(180deg, rgba(7,53,86,1) 0%, rgba(222,222,222,1) 100%, rgba(255,255,255,1) 100%);
+    color:black;
+    font-weight: bold;
     padding-top: 3%;
     
 }
 .req:hover{
-    background: linear-gradient(90deg, rgba(38,71,82,1) 0%, rgba(60,98,107,1) 19%, rgba(65,136,62,1) 50%, rgba(90,158,71,1) 81%, rgba(106,154,91,1) 100%);
+  box-shadow: 0px 0px 14px 14px rgba(0, 0, 0, 0.3);
 }
 .myAlert{
     transition: all 2000ms ease-in-out;
@@ -26,6 +27,12 @@
     }
   }
 
+  .RepHeadDiv{
+    top: 10%;
+    color:rgb(0, 0, 0);
+    height: 50px;
+    bottom:130%;
+  }
 
   /*expences*/
   .exp{

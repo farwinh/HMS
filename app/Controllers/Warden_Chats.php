@@ -16,13 +16,13 @@ class Warden_Chats extends BaseController
         $output='';
         switch($theUser){
             case 'dean':
-                $output .='<img src="assets/images/Profiles/dean/dean.jfif" class="imgProBox">';
+                $output .='<img src="assets/images/Profiles/dean/dean.jpg" class="imgProBox">';
                 return $output;
             break;
             case 'subwarden':
                 
                 $obj_sw=new model_subwarden();
-                foreach(($result=$obj_sw->findAll()) as $row){
+                foreach(($result=$obj_sw->findAll(4)) as $row){
                     $output .='
                     
                     <td>
@@ -36,7 +36,7 @@ class Warden_Chats extends BaseController
             break;
             case 'student':
                 $obj_stu = new student_member_model();
-                foreach(($result=$obj_stu->findAll()) as $row){
+                foreach(($result=$obj_stu->findAll(4)) as $row){
                     $output .='
                     
                     <td>
@@ -48,9 +48,23 @@ class Warden_Chats extends BaseController
                 }
             return $output;
             break;
+            case 'warden':
+                $obj_war = new model_subwarden();
+                foreach(($result=$obj_war->findAll(4)) as $row){
+                    $output .='
+                    
+                    <td>
+                        <img src="assets/images/Profiles/SubWarden/'.$row['pro_pic'].'" class="imgProBox">
+                    </td>
+                    
+                    ';  
+                    
+                }
+            return $output;
+            break;
             case 'security':
                 $obj_sec = new Security_model();
-                foreach(($result=$obj_sec->findAll()) as $row){
+                foreach(($result=$obj_sec->findAll(4)) as $row){
                     $output .='
                     
                     <td>

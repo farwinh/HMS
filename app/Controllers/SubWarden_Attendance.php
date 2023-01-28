@@ -8,6 +8,8 @@ use App\Models\chats_models;
 use App\Models\model_complaints;
 use App\Models\model_subwarden;
 use App\Models\model_entry_leave;
+use CodeIgniter\CLI\Console;
+
 class SubWarden_Attendance extends BaseController
 {
     public function index()
@@ -23,10 +25,11 @@ class SubWarden_Attendance extends BaseController
             foreach($re as $row){
                 $output .='
                     <tr>
+                        <td scope="col">'.$row['student_ID'].'</td>
                         <td scope="col">'.$row['enter_date'].'</td>
                         <td scope="col">'.$row['enter_time'].'</td>
                         <td scope="col">'.$row['exit_date'].'</td>
-                        <td scope="col">'.$row['exit_date'].'</td>
+                        <td scope="col">'.$row['exit_time'].'</td>
                     </tr>
             
             ';
@@ -39,10 +42,11 @@ class SubWarden_Attendance extends BaseController
         foreach($re as $row){
             $output .='
             <tr>
+                <td scope="col">'.$row['student_ID'].'</td>
                 <td scope="col">'.$row['enter_date'].'</td>
                 <td scope="col">'.$row['enter_time'].'</td>
                 <td scope="col">'.$row['exit_date'].'</td>
-                <td scope="col">'.$row['exit_date'].'</td>
+                <td scope="col">'.$row['exit_time'].'</td>
             </tr>
             
             ';
@@ -65,7 +69,7 @@ class SubWarden_Attendance extends BaseController
             ';
             return $output;
         }
-        $re=$obj_EL->where('student_ID',$input)->findAll();
+        $re=$obj_EL->where('student_ID',$input)->orderBy('no', 'desc')->limit(1)->find();
         foreach($re as $row){
             //get date
             $date=date('Y-m-d');
@@ -91,11 +95,12 @@ class SubWarden_Attendance extends BaseController
              if(($row['exit_date']=='0000-00-00')&&($row['exit_time']=='00:00:00')){
                 //return ("NO exit");
                 //entered date
+                
                 $enDate=$row['enter_date'];
                 $eDiffDate=abs(strtotime($enDate)-strtotime($date));
-                $years = floor($dDate / (365*60*60*24));
-                $months = floor(($dDate - $years * 365*60*60*24) / (30*60*60*24));
-                $days = floor(($dDate - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+                $years = floor($eDiffDate / (365*60*60*24));
+                $months = floor(($eDiffDate - $years * 365*60*60*24) / (30*60*60*24));
+                $days = floor(($eDiffDate - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
                 //return ($dDate);
 
                 //entered time

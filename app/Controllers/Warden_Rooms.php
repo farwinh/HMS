@@ -32,8 +32,16 @@ class Warden_Rooms extends BaseController
         
     }
     function girls_list(){
+        $output = '<option value="">SELECT STUDENT ID</option>';
         $obj_girls_hostel = new girls_hostel();
+        $roomNo=$this->request->getVar('room_id');
         
+        foreach(($result=$obj_girls_hostel->where('room_no',$roomNo)->findAll()) as $row){
+            $output .='
+            <option value='.$row['student_id'].' name="tg" id="tg">'.$row['student_id'].'</option> 
+            ';  
+        }
+        return $output;
     }
 
     //room management
@@ -130,19 +138,31 @@ class Warden_Rooms extends BaseController
         $output = '<option value="null" id="selRoom">SELECT A ROOM</option>';
 
         foreach($r as $row){
-
-         
                     $output .='
-                <option value='.$row['room_no'].'>'.$row['room_no'].' </option> 
+                <option value='.$row['room_no'].' >'.$row['room_no'].' </option> 
                 '; 
-
-           
-            
         }
         return $output;
     }
     public function fetch_gil_data(){
-        echo "Room";
+        $output="";
+        $obj_girls_hostel = new girls_hostel();
+        $roomNum=$this->request->getVar('the_room');
+        
+        $result=$obj_girls_hostel->where('room_no',$roomNum)->findAll();
+        
+        foreach($result as $row){
+            
+            $output .='
+            
+                <div class="form-check sTMem" id="stMem" for="'.$row['student_id'].'"> 
+                    <input type="checkbox" class="form-check-input cbox" id="'.$row['student_id'].'" name="st_no" value="'.$row['student_id'].'">
+                    <label class="form-check-label labelCheck" for="'.$row['student_id'].'" style="padding-left:40%;font-size:2em">'.$row['student_id'].'</label>
+                </div>
+            ';  
+            
+        }
+        return $output;
     }
     
     public function fetch_bys_data(){
@@ -209,9 +229,70 @@ class Warden_Rooms extends BaseController
         if($TotalCount<5){
             $reDel=$obj_boys_hostel->where('student_id',$st1)->delete();
             if(!$reDel){
-                $output.='Cannot delete';
+                $output.="Cannot delete";
             }
             $reIn=$obj_boys_hostel->insert($arr1);
+            
+            if($reIn){
+                $output .="
+                    '.$count.' Number of new Students have changed the room to '.$NewRoom.'; 
+                ";
+            }
+        
+        }else{
+            $output .="There are '.$countRe.' students have already registered in Room No: '.$NewRoom.' and you have selected '.$count.' new students";
+            $output .="<b>Maximum only 4 Students</b>";
+        }
+        
+        return $output;
+    }
+    public function changeRoomsGirls(){
+        $output="";
+        $obj_girls_hostel = new girls_hostel();
+        $NewFloor=$this->request->getVar('newF');
+        $NewRoom=$this->request->getVar('newR');
+        $st1=$this->request->getVar('st1');
+        $st2=$this->request->getVar('st2');
+        $st3=$this->request->getVar('st3');
+        $st4=$this->request->getVar('st4');
+        $arr1="";
+        $arr2="";
+        $arr3="";
+        $arr4="";
+        
+        //$output=$NewRoom+" "+$NewFloor;
+        //taking the count of the new student details
+        $count=0;
+        $arr1=array(
+            'room_no'=>$NewRoom,
+            'floor'=>$NewFloor,
+            'student_id'=>$st1
+        );
+        if($st1!=null){
+            $count+=1;
+        }
+        if($st2!=null){
+            $count+=1;
+        }
+        if($st3!=null){
+            $count+=1;
+        }
+        if($st4!=null){
+            $count+=1;
+        }
+        
+        //find weather how many students are already in the new room
+        $result=$obj_girls_hostel->where('room_no',$NewRoom)->findAll();
+        $countRe=count($result);
+
+        //taking the total count to check weather it's less than 4
+        $TotalCount=$count+$countRe;
+        if($TotalCount<5){
+            $reDel=$obj_girls_hostel->where('student_id',$st1)->delete();
+            if(!$reDel){
+                $output.='Cannot delete';
+            }
+            $reIn=$obj_girls_hostel->insert($arr1);
             
             if($reIn){
                 $output.='
@@ -228,9 +309,4 @@ class Warden_Rooms extends BaseController
         
         return $output;
     }
-    public function changeRoomsGirls(){
-        
-    }
 }
-
-?>

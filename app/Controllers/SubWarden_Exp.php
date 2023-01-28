@@ -25,8 +25,8 @@ class SubWarden_Exp extends BaseController
                         <td>'.$row['Date'].'</td>
                         <td>'.$row['type'].'</td>
                         <td>'.$row['Amount'].'</td>
-                        <td>'.$row['exp_id'].'</td>
                         <td>'.$row['receipt'].'</td>
+                        
                         <td>
                             <i type="button" data-toggle="modal" data-target="#modifyModal" class="fas fa-edit" id="'.$row['exp_id'].'" onclick="editFunction(this.id)" style="color:green"></i>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -143,5 +143,25 @@ class SubWarden_Exp extends BaseController
             //quick update
             return($this->getExp());
         }
+    }
+
+    public function addExp(){
+        $output='';
+        $obj_exp= new model_expenses();
+        $date=$this->request->getVar('date');
+        $ExType=$this->request->getVar('ExType');
+        $amount=$this->request->getVar('amount');
+        $rId=$this->request->getVar('rId');
+        $data=array(
+            'type'=>$ExType,
+            'Date'=>$date,
+            'Amount'=>$amount,
+            'receipt'=>$rId     
+        );
+        $reIn=$obj_exp->save($data);
+        if($reIn){
+            $output .='Expence Added';
+        }
+        return $output;
     }
 }

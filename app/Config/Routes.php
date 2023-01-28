@@ -37,6 +37,12 @@ $routes->get('home', 'Home::index');
 $routes->get('gallery', 'Home::gallery');
 $routes->get('login', 'Home::login');
 $routes->get('logout', 'Home::logout');
+$routes->get('forgot_password_view','Home::forgot_password_view');
+$routes->get('reset_password','Home::reset_password_view');
+$routes->post('forgot_password','Home::forgot_password');
+$routes->post('reset_password','Home::reset_password');
+$routes->get('contact_us','Home::contactUsView');
+$routes->post('contact_us','Home::contactUs');
 
 //warden area
 $routes->get('Warden_dashboard', 'Warden_Dashboard::index');
@@ -64,19 +70,24 @@ $routes->get('SubExp', 'SubWarden_Exp::index');
 
 //security area
 $routes->get('Security_login', 'Security_Dashboard::index');
+$routes->get('security_dashboardA', 'security_DashboardA::index');
+$routes->get('dashboard', 'security_DashboardA::update_user');
+$routes->get('dashboard', 'security_DashboardA::update_propic');
+$routes->get('prof', 'security_DashboardA::prof');
 $routes->get('Send_sms_student', 'Security_Dashboard::Send_sms_student');
 $routes->add('Se_search', 'Security_Dashboard::Se_search');
-$routes->add('security_send_Message', 'Security_Dashboard::se_send_Message');
-$routes->add('se_update_user', 'Security_Dashboard::se_update_user');
-$routes->add('changePassword', 'Security_Dashboard::changePassword');
-$routes->add('update_propic', 'Security_Dashboard::update_propic');
+$routes->add('security_send_Message', 'Security_Dashboard::se_send_Message'); 
+$routes->get('log_atte', 'Security_DashboardA::log_atte');
+$routes->post('logA', 'Security_DashboardA::log_A');
+$routes->get('chat_s', 'Security_Dashboard::chat');
+$routes->get('secprof', 'Security_Dashboard::prof');
 
 
+ $routes->POST('logAA', 'Security_DashboardA::log_AAA');
+$routes->get('logA', 'Security_DashboardA::log_A');
 
-// $routes->get('Security_login', 'Security_Dashboard::index');
-// $routes->get('Send_sms_student', 'Security_Dashboard::Send_sms_student');
-// $routes->add('Se_search', 'Security_Dashboard::Se_search');
-// $routes->add('security_send_Message', 'Security_Dashboard::se_send_Message');
+$routes->get('log_atteAA', 'Security_DashboardA::log_atte');
+$routes->get('log_index', 'Security_DashboardA::log_index');
 
 //dean area
 $routes->get('dean_dashboard', 'Dean_Dashboard::index');
